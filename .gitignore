@@ -3,3 +3,13 @@ _site
 .jekyll-metadata
 Gemfile.lock
 Gemfile
+
+cmake-build-debug/
+
+build/
+
+__pycache__/
+
+3rd-party/
+
+\.idea/
