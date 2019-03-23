@@ -63,7 +63,7 @@ If you are not experienced with simulations, be aware of incredible results, as 
 1. Collect the number and duration of collisions with the PU
 
 ## Video
-![instructions video](https://youtu.be/PXkHXzbs9YY)
+[https://youtu.be/PXkHXzbs9YY](https://youtu.be/PXkHXzbs9YY)
 
 ## Bonus: modified/included functions of the LTE stack for the collaborative sensing
 ![modified/included functions for sensing](/NS3/img/sensing_cyc.jpg)
