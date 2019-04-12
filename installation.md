@@ -6,6 +6,7 @@ permalink: /installation
 
 ## 1. Pre-requisites
 Before proceeding you will need: 
+
     1. git
     2. g++
     3. make or ninja
