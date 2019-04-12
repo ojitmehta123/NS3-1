@@ -10,7 +10,7 @@ ns-3-COLAB is a set of modifications to the standard LTE implementation of the n
 ## How to install?
 The first step is cloning the [NS3.29-cognitive repo](https://github.com/Gabrielcarvfer/NS3/tree/NS3.29-cognitive).
 
-As in the installation instructions for the [ns-3 with CMake](installation), before proceeding you will need at least g++, make, cmake, unzip, curl and tar.
+As in the installation instructions for the [ns-3 with CMake](/installation), before proceeding you will need at least g++, make, cmake, unzip, curl and tar.
 
 After downloading and installing these tools, you can either run cmake manually, as follows
 ```
