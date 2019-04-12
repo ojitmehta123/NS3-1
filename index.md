@@ -17,4 +17,4 @@ If you are looking for the collaborative sensing adaptations for the ns-3 LTE mo
 
 If you are looking for the 802.11 AP with the dynamic beacon adjustment, check out the [ns-3-dynamicBeacon page](/NS3/dynamicBeacon)
 
-If you have problems or want to help, join the (Discord server](https://discord.gg/dWDgdkz).
+If you have problems or want to help, join the [Discord server](https://discord.gg/dWDgdkz).
