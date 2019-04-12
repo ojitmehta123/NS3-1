@@ -68,7 +68,7 @@ As [Waf](https://waf.io/) (the official buildsystem) was replaced with CMake, th
 
 Instead of a wscript per module, you will need a CMakeLists.txt file. As an example, let's take the Applications module wscript and compare to the CMakeLists.txt that replaced it.
 
-###Applications Wscript
+### Applications Wscript
 ```
 def build(bld):
     module = bld.create_ns3_module('applications', ['internet', 'config-store','stats'])
@@ -91,7 +91,7 @@ def build(bld):
         ]
 ```
 
-###Applications CMakeLists.txt
+### Applications CMakeLists.txt
 ```
 
 
