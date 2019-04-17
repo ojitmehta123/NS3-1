@@ -5,7 +5,7 @@
 layout: home
 ---
 
-The ns-3 with CMake project is a modified version of the original [NSNAM ns-3](https://www.nsnam.org/) network simulator. 
+The [ns-3 with CMake](https://github.com/Gabrielcarvfer/NS3) project is a modified version of the original [NSNAM ns-3](https://www.nsnam.org/) network simulator. 
 
 The main changes are related to the buildsystem, replacing the original Waf with CMake, for the sake of using [Jetbrains CLion](https://www.jetbrains.com/clion/).
 
