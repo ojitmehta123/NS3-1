@@ -106,7 +106,7 @@ cd ../../cmake-cache
 ### 5.2 Running executables with CLion
 Select the desired target to run from the drop-down list and then click either: the play button to execute the program;
 the bug to debug the program; the play button with a chip, to run Valgrind and analyze memory usage, leaks and so on.
-![build_targets](NS3/img/run_target.png)
+![build_targets](/NS3/img/run_target.png)
 
 ## 6. Creating a new module
 As [Waf](https://waf.io/) (the official buildsystem) was replaced with CMake, the required steps to create a new module for the ns-3 change slightly.
