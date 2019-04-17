@@ -87,7 +87,7 @@ You can also run `make clean` to remove built libraries and executables before r
 
 ### 4.2 Building the project with CLion
 You can select the desired target on a drop-down list and then click the hammer symbol, as shown in the image below.
-![build_targets](NS3/img/build_targets.png)
+![build_targets](/NS3/img/build_targets.png)
 
 ## 5. Running built executables
 After building executables, they will be placed in NS3/build/bin. To run them, you can either use the command line or your prefered IDE.
