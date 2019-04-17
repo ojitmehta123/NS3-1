@@ -33,18 +33,49 @@ Navigate to the cloned NS3 folder, create a CMake cache folder, navigate to it a
 cd NS3
 mkdir cmake-cache
 cd cmake-cache
-cmake -DCMAKE_BUILD_TYPE=DEBUG|RELEASE|RELWITHDEBINFO|MINSIZEREL -G"MinGW|Unix|MSYS Makefiles" ..
+cmake -DCMAKE_BUILD_TYPE=**look the tables below** -G"**look the tables below**" ..
 ```
-You can pass arguments to the CMake command, like the [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html) and choose [buildsystem generator](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html) with the -G flag.
+You can pass arguments to the CMake command, to configure it.
 
-For the ns-3 options, I recommend editting the default values of the switches in the NS3/CMakeLists.txt file.
+To set the build type (debug or release) you will need to set the value of a variable (-D) named [CMAKE_BUILD_TYPE](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html) with the preset you want. You can choose one of the following:
 
-or you can use an IDE that supports CMake projects (Jetbrains CLion is the best one), that will load and run CMake automatically after opening the project folder.
+| CMAKE_BUILD_TYPE | [Effects  (g++)](https://github.com/Kitware/CMake/blob/master/Modules/Compiler/GNU.cmake)  |
+|:----------------:|:---------------:|
+| DEBUG            | -g              |
+| RELEASE          | -O3 -DNDEBUG    |
+| RELWITHDEBINFO   | -O2 -g -DNDEBUG |
+| MINSIZEREL       | -Os -DNDEBUG    |
+
+You can also choose the generator for your preferred [buildsystem](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html) with the following argument: -G "generator name (with double quotes)"
+
+| Generators       | 
+|:----------------:|
+| MinGW Makefiles  | 
+| Unix  Makefiles  | 
+| MSYS  Makefiles  | 
+| Ninja            | 
+| Xcode            |
+| Visual Studio *VERSION* *YEAR* |
+
+For specific ns-3 options, I recommend editting the default values of the switches in the NS3/CMakeLists.txt file.
+
+You can also use an IDE that supports CMake projects (Jetbrains CLion is the best one), that will load and run CMake automatically after opening the project folder.
 
 During the `cmake` command, [VcPkg](https://github.com/Microsoft/vcpkg) will be compiled and then will download and build required dependencies. This will take some time.
 
-### 3.2 CMake configuration with CLion
+This command will be used in the future, as it triggers the automatic copy of headers in /NS3/src to /NS3/build/NS3 and discover newer targets (libraries, executables and/or modules that were created since the last run). This is known as reloading the CMake cache.
 
+### 3.2 CMake configuration with CLion
+CLion use Makefiles for your platform as the default generator. There are ways to work around it, but that's not the point of this tutorial.
+
+The following image contains the toolchain configuration for CLion running on Windows.
+![toolchains](/NS3/img/toolchains.png)
+
+The following image contains the CMake configuration for CLion running on Windows.
+![configuration](/NS3/img/cmake_configuration.png)
+
+To reload the CMake cache, triggering the copy of new headers and discovery of new targets (libraries, executables and/or modules), you can either configure to re-run CMake automatically after editing CMake files (pretty slow and easily triggered) or reload manually. The following image shows how to trigger the CMake cache reload.
+![reload_cache](/NS3/img/reload_cache.png)
 
 ## 4 Building the project
 After the configuration, you will have multiple targets (for libraries and executables). Again, you can choose either command line tools or IDEs that support CMake projects to build and link those targets.
@@ -55,7 +86,8 @@ If you selected the Makefiles generator, you can run the `make` command to build
 You can also run `make clean` to remove built libraries and executables before rebuilding them.
 
 ### 4.2 Building the project with CLion
-
+You can select the desired target on a drop-down list and then click the hammer symbol, as shown in the image below.
+![build_targets](NS3/img/build_targets.png)
 
 ## 5. Running built executables
 After building executables, they will be placed in NS3/build/bin. To run them, you can either use the command line or your prefered IDE.
@@ -72,6 +104,9 @@ cd ../../cmake-cache
 ```
 
 ### 5.2 Running executables with CLion
+Select the desired target to run from the drop-down list and then click either: the play button to execute the program;
+the bug to debug the program; the play button with a chip, to run Valgrind and analyze memory usage, leaks and so on.
+![build_targets](NS3/img/run_target.png)
 
 ## 6. Creating a new module
 As [Waf](https://waf.io/) (the official buildsystem) was replaced with CMake, the required steps to create a new module for the ns-3 change slightly.
