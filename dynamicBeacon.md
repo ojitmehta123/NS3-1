@@ -8,7 +8,7 @@ permalink: /dynamicBeacon/
 dynamicBeacon is a set of modifications to the 802.11 standards implemented in the ns-3 simulator. These modifications implement a beacon backoff technique to reduce/increase the transmission of beacon frames when network nodes are mostly static/moving, while trying to keep association/dissociation times low.
 
 ## How to cite?
-Check the paper in the link: https://link.springer.com/chapter/10.1007%2F978-3-030-15032-7_55
+Check the paper in the link: [https://link.springer.com/chapter/10.1007%2F978-3-030-15032-7_55](https://link.springer.com/chapter/10.1007%2F978-3-030-15032-7_55)
 
 ## How to install?
 The first step is cloning the [NS3.27-wifiDynamicBeacon](https://github.com/Gabrielcarvfer/NS3/tree/NS3.27-wifiDynamicBeacon).
