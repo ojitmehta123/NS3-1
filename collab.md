@@ -8,7 +8,7 @@ permalink: /COLAB/
 ns-3-COLAB is a set of modifications to the standard LTE implementation of the ns-3 simulator. These modifications implement a simple collaborative sensing cycle and allow the development of new schedulers, collaborative sensing fusion algorithms and dynamic spectrum access research.
 
 ## How to cite?
-Check the paper in the link: https://ieeexplore.ieee.org/document/8877232
+Check the paper in the link: [https://ieeexplore.ieee.org/document/8877232](https://ieeexplore.ieee.org/document/8877232)
 
 ## How to install?
 The first step is cloning the [NS3.29-cognitive repo](https://github.com/Gabrielcarvfer/NS3/tree/NS3.29-cognitive).
