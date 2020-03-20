@@ -13,7 +13,7 @@ Most ns-3 features are already usable with CMake, but python bindings and visual
 
 If you are looking for installation instructions, check the [installation page](/NS3/installation)
 
-If you are looking for the collaborative sensing adaptations for the ns-3 LTE module, check the [ns-3-COLAB page](/NS3/COLAB).
+If you are looking for the collaborative sensing adaptations for the ns-3 LTE module, check the [ns-3-COLAB page](/NS3/COLAB), or the [COLAB-5G](/NS3/COLAB-5G) for additional rural 5G adaptations.
 
 If you are looking for the 802.11 AP with the dynamic beacon adjustment, check out the [ns-3-dynamicBeacon page](/NS3/dynamicBeacon)
 
