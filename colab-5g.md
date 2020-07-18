@@ -8,7 +8,7 @@ permalink: /COLAB_5G/
 COLAB-5G is a set of modifications to the ns3-COLAB, integrating the [5G-RANGE](http://5g-range.eu/) physical layer model to the LTE stack, along with a new channel model, timing adjustments for the MAC layer and additional collaborative sensing techniques to mitigate Byzantine attacks.
 
 ## How to cite?
-Papers for the tool and proposed techniques are currently in review, but you can cite the [ns3-COLAB](/NS3/COLAB).
+Check the paper in the [link](https://ieeexplore.ieee.org/document/9142763).
 
 ## How to install?
 The first step is cloning the [NS3.30.1-colab5g](https://github.com/Gabrielcarvfer/NS3/tree/NS3.30.1-colab5g).
