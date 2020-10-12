@@ -18,9 +18,14 @@ Before proceeding you will need:
 Those are basic pre-requisites for both ns-3 and VcPkg, used in this version of ns-3 for dependencies installation. The [official ns-3 branch](https://gitlab.com/nsnam/ns-3-dev/) uses Bake for dependencies installation.
 
 ## 2. Fetching the code
-After installing the dependencies, clone the [ns-3 with CMake](https://github.com/Gabrielcarvfer/NS3) repository.
+After installing the dependencies, clone the [ns-3 with CMake](https://github.com/Gabrielcarvfer/NS3) repository. 
 ```
 git clone https://github.com/Gabrielcarvfer/NS3.git
+```
+
+You can use shallow clone to speed things up.
+```
+git clone --branch master --single-branch https://github.com/Gabrielcarvfer/NS3.git
 ```
 
 ## 3. CMake configuration 
