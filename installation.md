@@ -100,12 +100,16 @@ To reload the CMake cache, triggering the copy of new headers and discovery of n
 
 ### 3.3 CMake configuration with Visual Studio
 Visual Studio is cursed and uses nmake/msbuild as generators.
-After opening the folder with the project, right-click the CMakeLists.txt file and click to generate the cmake cache.
-ImgPlaceholder
+Start by opening the folder as a project.
+![vs_open_project](/NS3/img/vs/vs_open_folder_as_project.png)
+
+Then right-click the CMakeLists.txt file and click to generate the cmake cache.
+![vs_generate_cache](/NS3/img/vs/vs_generate_cmake_cache.png)
 
 REMINDER: Only ClangCl is supported. You must open the cmake configuration panel that Visual Studio provides,
 look for advanced settings and select the appropriate clangcl toolchain. It won't build with the MSVC (cl.exe) compiler.
-ImgPlaceholder
+![vs_change_cmake_settings](/NS3/img/vs/vs_change_cmake_settings.png)
+![vs_set_clang_toolchain](/NS3/img/vs/vs_set_clang_toolchain.png)
 
 Visual Studio should regenerate the caches after that.
 
@@ -124,10 +128,12 @@ You can select the desired target on a drop-down list and then click the hammer 
 ### 4.3 Building the project with Visual Studio
 To select your target, you should switch from project files to projects view
 in the solution explorer.
-ImgPlaceholder
+![vs_switch_to_targets](/NS3/img/vs/vs_switch_to_targets.png)
+![vs_targets](/NS3/img/vs/vs_targets.png)
 
 You can then click on either the play button or use the main menu->project->build project.
-ImgPlaceholder
+![vs_build_debug_target](/NS3/img/vs/vs_build_debug_target.png)
+![vs_build_project](/NS3/img/vs/vs_build_project.png)
 
 ## 5. Running built executables
 After building executables, they will be placed in NS3/build/bin. To run them, you can either use the command line or your prefered IDE.
