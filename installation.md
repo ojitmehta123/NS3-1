@@ -62,16 +62,31 @@ You can also choose the generator for your preferred [buildsystem](https://cmake
 | Xcode            |
 | Visual Studio *VERSION* *YEAR* |
 
-For specific ns-3 options, I recommend editting the default values of the switches in the NS3/CMakeLists.txt file.
+The Visual Studio generator also takes two flags to complete the build triplet.
 
-You can also use an IDE that supports CMake projects (Jetbrains CLion is the best one), that will load and run CMake automatically after opening the project folder.
+| Function | CMake flag | Options |
+|:--------:|:----------:|:-------:|
+| Specify architecture | -A | x86,x64,x86_x64,x64_x86 |
+| Specify tool chain | -T | ClangCL |
 
-During the `cmake` command, [VcPkg](https://github.com/Microsoft/vcpkg) will be compiled and then will download and build required dependencies. This will take some time.
+For specific ns-3 options, I recommend making a copy of the .cmake.template file and rename to .cmake, and then set the flags you want.
+You could also edit NS3/CMakeLists.txt directly, but that's usually a bad idea.
 
-This command will be used in the future, as it triggers the automatic copy of headers in /NS3/src to /NS3/build/NS3 and discover newer targets (libraries, executables and/or modules that were created since the last run). This is known as reloading the CMake cache.
+You can also use an IDE that supports CMake projects. 
+Jetbrains CLion is the best one, but Visual Studio also exists for those who like it.
+With both of them, you load the folder as a project, and they will look for the CMakeLists.txt file.
+
+If the flag to automatically install dependencies is enabled, [VcPkg](https://github.com/Microsoft/vcpkg) will be used.
+It is compiled and then downloads and build required dependencies during the first `cmake` run. 
+This can take quite some time.
+
+The `cmake` command will be used in the future, as it triggers the automatic copy of headers from NS3/src to /NS3/build/NS3.
+It is also used discover newer targets (libraries, executables and/or modules that were created since the last run). 
+This is known as reloading/updating the CMake cache.
 
 ### 3.2 CMake configuration with CLion
-CLion use Makefiles for your platform as the default generator. There are ways to work around it, but that's not the point of this tutorial.
+CLion uses Makefiles for your platform as the default generator. 
+You can choose a better generator like `ninja` by setting the cmake options flag to `-G Ninja`.
 
 The following image contains the toolchain configuration for CLion running on Windows.
 ![toolchains](/NS3/img/toolchains.png)
@@ -81,6 +96,17 @@ The following image contains the CMake configuration for CLion running on Window
 
 To reload the CMake cache, triggering the copy of new headers and discovery of new targets (libraries, executables and/or modules), you can either configure to re-run CMake automatically after editing CMake files (pretty slow and easily triggered) or reload manually. The following image shows how to trigger the CMake cache reload.
 ![reload_cache](/NS3/img/reload_cache.png)
+
+### 3.3 CMake configuration with Visual Studio
+Visual Studio is cursed and uses nmake/msbuild as generators.
+After opening the folder with the project, right-click the CMakeLists.txt file and click to generate the cmake cache.
+<Placeholder>
+
+REMINDER: Only ClangCl is supported. You must open the cmake configuration panel that Visual Studio provides,
+look for advanced settings and select the appropriate clangcl toolchain. It won't build with the MSVC (cl.exe) compiler.
+<Placeholder>
+
+Visual Studio should regenerate the caches after that.
 
 ## 4 Building the project
 After the configuration, you will have multiple targets (for libraries and executables). Again, you can choose either command line tools or IDEs that support CMake projects to build and link those targets.
@@ -93,6 +119,14 @@ You can also run `make clean` to remove built libraries and executables before r
 ### 4.2 Building the project with CLion
 You can select the desired target on a drop-down list and then click the hammer symbol, as shown in the image below.
 ![build_targets](/NS3/img/build_targets.png)
+
+### 4.3 Building the project with Visual Studio
+To select your target, you should switch from project files to projects view
+in the solution explorer.
+<Placeholder>
+
+You can then click on either the play button or use the main menu->project->build project.
+<Placeholder>
 
 ## 5. Running built executables
 After building executables, they will be placed in NS3/build/bin. To run them, you can either use the command line or your prefered IDE.
