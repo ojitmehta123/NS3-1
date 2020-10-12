@@ -129,10 +129,12 @@ You can select the desired target on a drop-down list and then click the hammer 
 To select your target, you should switch from project files to projects view
 in the solution explorer.
 ![vs_switch_to_targets](/NS3/img/vs/vs_switch_to_targets.png)
+
 ![vs_targets](/NS3/img/vs/vs_targets.png)
 
 You can then click on either the play button or use the main Menu->Build->Build All.
 ![vs_build_debug_target](/NS3/img/vs/vs_build_debug_target.png)
+
 ![vs_build_project](/NS3/img/vs/vs_build_project.png)
 
 ## 5. Running built executables
