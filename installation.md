@@ -86,12 +86,13 @@ This is known as reloading/updating the CMake cache.
 
 ### 3.2 CMake configuration with CLion
 CLion uses Makefiles for your platform as the default generator. 
-You can choose a better generator like `ninja` by setting the cmake options flag to `-G Ninja`.
 
 The following image contains the toolchain configuration for CLion running on Windows.
 ![toolchains](/NS3/img/toolchains.png)
 
-The following image contains the CMake configuration for CLion running on Windows.
+The following image contains the CMake configuration for CLion running on Windows. 
+Here you can choose a better generator like `ninja` by setting the cmake options flag to `-G Ninja`.
+
 ![configuration](/NS3/img/cmake_configuration.png)
 
 To reload the CMake cache, triggering the copy of new headers and discovery of new targets (libraries, executables and/or modules), you can either configure to re-run CMake automatically after editing CMake files (pretty slow and easily triggered) or reload manually. The following image shows how to trigger the CMake cache reload.
