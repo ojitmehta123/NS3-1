@@ -49,7 +49,7 @@ PhyTxStatsCalculator::GetTypeId (void)
 {
   static TypeId tid = TypeId ("ns3::PhyTxStatsCalculator")
     .SetParent<LteStatsCalculator> ()
-    .SetGroupName("Lte")
+    .SetGroupName ("Lte")
     .AddConstructor<PhyTxStatsCalculator> ()
     .AddAttribute ("DlTxOutputFilename",
                    "Name of the file where the downlink results will be saved.",
@@ -95,43 +95,30 @@ PhyTxStatsCalculator::DlPhyTransmission (PhyTransmissionStatParameters params)
   NS_LOG_FUNCTION (this << params.m_cellId << params.m_imsi << params.m_timestamp << params.m_rnti << params.m_layer << params.m_mcs << params.m_size << params.m_rv << params.m_ndi);
   NS_LOG_INFO ("Write DL Tx Phy Stats in " << GetDlTxOutputFilename ().c_str ());
 
-  std::ofstream outFile;
   if ( m_dlTxFirstWrite == true )
     {
-      outFile.open (GetDlOutputFilename ().c_str ());
-      if (!outFile.is_open ())
+      dlOutFile.open (GetDlOutputFilename ().c_str ());
+      if (!dlOutFile.is_open ())
         {
           NS_LOG_ERROR ("Can't open file " << GetDlTxOutputFilename ().c_str ());
           return;
         }
       m_dlTxFirstWrite = false;
-      //outFile << "% time\tcellId\tIMSI\tRNTI\tlayer\tmcs\tsize\trv\tndi"; // txMode is not available at dl tx side
-      outFile << "% time\tcellId\tIMSI\tRNTI\tlayer\tmcs\tsize\trv\tndi\tccId";
-      outFile << std::endl;
-    }
-  else
-    {
-      outFile.open (GetDlTxOutputFilename ().c_str (),  std::ios_base::app);
-      if (!outFile.is_open ())
-        {
-          NS_LOG_ERROR ("Can't open file " << GetDlTxOutputFilename ().c_str ());
-          return;
-        }
+      dlOutFile << "% time\tcellId\tIMSI\tRNTI\tlayer\tmcs\tsize\trv\tndi\tccId";
+      dlOutFile << std::endl;
     }
 
-//   outFile << Simulator::Now ().GetNanoSeconds () / (double) 1e9 << "\t";
-  outFile << params.m_timestamp << "\t";
-  outFile << (uint32_t) params.m_cellId << "\t";
-  outFile << params.m_imsi << "\t";
-  outFile << params.m_rnti << "\t";
-  //outFile << (uint32_t) params.m_txMode << "\t"; // txMode is not available at dl tx side
-  outFile << (uint32_t) params.m_layer << "\t";
-  outFile << (uint32_t) params.m_mcs << "\t";
-  outFile << params.m_size << "\t";
-  outFile << (uint32_t) params.m_rv << "\t";
-  outFile << (uint32_t) params.m_ndi << "\t";
-  outFile << (uint32_t) params.m_ccId << std::endl;
-  outFile.close ();
+  dlOutFile << params.m_timestamp << "\t";
+  dlOutFile << (uint32_t) params.m_cellId << "\t";
+  dlOutFile << params.m_imsi << "\t";
+  dlOutFile << params.m_rnti << "\t";
+  //dlOutFile << (uint32_t) params.m_txMode << "\t"; // txMode is not available at dl tx side
+  dlOutFile << (uint32_t) params.m_layer << "\t";
+  dlOutFile << (uint32_t) params.m_mcs << "\t";
+  dlOutFile << params.m_size << "\t";
+  dlOutFile << (uint32_t) params.m_rv << "\t";
+  dlOutFile << (uint32_t) params.m_ndi << "\t";
+  dlOutFile << (uint32_t) params.m_ccId << "\n";
 }
 
 void
@@ -140,48 +127,36 @@ PhyTxStatsCalculator::UlPhyTransmission (PhyTransmissionStatParameters params)
   NS_LOG_FUNCTION (this << params.m_cellId << params.m_imsi << params.m_timestamp << params.m_rnti << params.m_layer << params.m_mcs << params.m_size << params.m_rv << params.m_ndi);
   NS_LOG_INFO ("Write UL Tx Phy Stats in " << GetUlTxOutputFilename ().c_str ());
 
-  std::ofstream outFile;
   if ( m_ulTxFirstWrite == true )
     {
-      outFile.open (GetUlTxOutputFilename ().c_str ());
-      if (!outFile.is_open ())
+      ulOutFile.open (GetUlTxOutputFilename ().c_str ());
+      if (!ulOutFile.is_open ())
         {
           NS_LOG_ERROR ("Can't open file " << GetUlTxOutputFilename ().c_str ());
           return;
         }
       m_ulTxFirstWrite = false;
 //       outFile << "% time\tcellId\tIMSI\tRNTI\ttxMode\tlayer\tmcs\tsize\trv\tndi";
-      outFile << "% time\tcellId\tIMSI\tRNTI\tlayer\tmcs\tsize\trv\tndi\tccId";
-      outFile << std::endl;
-    }
-  else
-    {
-      outFile.open (GetUlTxOutputFilename ().c_str (),  std::ios_base::app);
-      if (!outFile.is_open ())
-        {
-          NS_LOG_ERROR ("Can't open file " << GetUlTxOutputFilename ().c_str ());
-          return;
-        }
+      ulOutFile << "% time\tcellId\tIMSI\tRNTI\tlayer\tmcs\tsize\trv\tndi\tccId";
+      ulOutFile << std::endl;
     }
 
-//   outFile << Simulator::Now ().GetNanoSeconds () / (double) 1e9 << "\t";
-  outFile << params.m_timestamp << "\t";
-  outFile << (uint32_t) params.m_cellId << "\t";
-  outFile << params.m_imsi << "\t";
-  outFile << params.m_rnti << "\t";
-  //outFile << (uint32_t) params.m_txMode << "\t";
-  outFile << (uint32_t) params.m_layer << "\t";
-  outFile << (uint32_t) params.m_mcs << "\t";
-  outFile << params.m_size << "\t";
-  outFile << (uint32_t) params.m_rv << "\t";
-  outFile << (uint32_t) params.m_ndi << "\t";
-  outFile << (uint32_t) params.m_ccId << std::endl;
-  outFile.close ();
+  ulOutFile << params.m_timestamp << "\t";
+  ulOutFile << (uint32_t) params.m_cellId << "\t";
+  ulOutFile << params.m_imsi << "\t";
+  ulOutFile << params.m_rnti << "\t";
+  //ulOutFile << (uint32_t) params.m_txMode << "\t";
+  ulOutFile << (uint32_t) params.m_layer << "\t";
+  ulOutFile << (uint32_t) params.m_mcs << "\t";
+  ulOutFile << params.m_size << "\t";
+  ulOutFile << (uint32_t) params.m_rv << "\t";
+  ulOutFile << (uint32_t) params.m_ndi << "\t";
+  ulOutFile << (uint32_t) params.m_ccId << "\n";
 }
 
 void
 PhyTxStatsCalculator::DlPhyTransmissionCallback (Ptr<PhyTxStatsCalculator> phyTxStats,
-                      std::string path, PhyTransmissionStatParameters params)
+                                                 std::string path, PhyTransmissionStatParameters params)
 {
   NS_LOG_FUNCTION (phyTxStats << path);
   uint64_t imsi = 0;
@@ -204,7 +179,7 @@ PhyTxStatsCalculator::DlPhyTransmissionCallback (Ptr<PhyTxStatsCalculator> phyTx
 
 void
 PhyTxStatsCalculator::UlPhyTransmissionCallback (Ptr<PhyTxStatsCalculator> phyTxStats,
-                      std::string path, PhyTransmissionStatParameters params)
+                                                 std::string path, PhyTransmissionStatParameters params)
 {
   NS_LOG_FUNCTION (phyTxStats << path);
   uint64_t imsi = 0;
