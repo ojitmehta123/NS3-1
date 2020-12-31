@@ -253,7 +253,7 @@ Ipv4HeaderTest::DoRun (void)
       NS_TEST_EXPECT_MSG_EQ (m_receivedPacket->GetSize (), 143, "recv(hdrincl): 10.0.0.1");
       NS_TEST_EXPECT_MSG_EQ (m_receivedHeader.GetDscp (), vDscpTypes [i], "recv(hdrincl): 10.0.0.1");
       m_receivedHeader.Print (std::cout);
-      std::cout << std::endl;
+      std::cout << "\n";
       m_receivedPacket->RemoveAllByteTags ();
       m_receivedPacket = 0;
     }
@@ -272,7 +272,7 @@ Ipv4HeaderTest::DoRun (void)
       NS_TEST_EXPECT_MSG_EQ (m_receivedPacket->GetSize (), 143, "recv(hdrincl): 10.0.0.1");
       NS_TEST_EXPECT_MSG_EQ (m_receivedHeader.GetEcn (), vEcnTypes [i], "recv(hdrincl): 10.0.0.1");
       m_receivedHeader.Print (std::cout);
-      std::cout << std::endl;
+      std::cout << "\n";
       m_receivedPacket->RemoveAllByteTags ();
       m_receivedPacket = 0;
     }
