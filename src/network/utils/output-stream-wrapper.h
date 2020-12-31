@@ -94,6 +94,8 @@ public:
 
 private:
   std::ostream *m_ostream; //!< The output stream
+  std::stringstream m_sstream;
+  int time_to_flush = 0;
   bool m_destroyable; //!< Can be destroyed
 };
 

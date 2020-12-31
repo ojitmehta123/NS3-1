@@ -50,6 +50,8 @@ OutputStreamWrapper::~OutputStreamWrapper ()
 {
   NS_LOG_FUNCTION (this);
   FatalImpl::UnregisterStream (m_ostream);
+  *m_ostream << std::unitbuf << m_sstream.str();
+  m_sstream = std::stringstream();
   if (m_destroyable) delete m_ostream;
   m_ostream = 0;
 }
@@ -58,7 +60,14 @@ std::ostream *
 OutputStreamWrapper::GetStream (void)
 {
   NS_LOG_FUNCTION (this);
-  return m_ostream;
+  if (time_to_flush > 1000)
+  {
+    *m_ostream << std::unitbuf << m_sstream.str();
+    m_sstream = std::stringstream();
+    time_to_flush = 0;
+  }
+  time_to_flush++;
+  return &m_sstream;
 }
 
 } // namespace ns3
