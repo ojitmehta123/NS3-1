@@ -92,6 +92,11 @@ public:
    */
   std::ostream *GetStream (void);
 
+  /**
+   * Flush buffer into file.
+   *
+   */
+  void Flush (void);
 private:
   std::ostream *m_ostream; //!< The output stream
   std::stringstream m_sstream;

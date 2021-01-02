@@ -93,11 +93,13 @@ MobilityTraceTestCase::DoRun (void)
   std::string testMobilityFilePath      = CreateTempDirFilename ("mobility-trace-test.mob");
 
   AsciiTraceHelper ascii;
-  MobilityHelper::EnableAsciiAll (ascii.CreateFileStream (testMobilityFilePath));
+  Ptr<OutputStreamWrapper> stream = ascii.CreateFileStream (testMobilityFilePath);
+  MobilityHelper::EnableAsciiAll (stream);
   Simulator::Stop (Seconds (5.0));
   Simulator::Run ();
   Simulator::Destroy ();
 
+  stream->Flush(); // ensure mobility trace is flushed before checking
 
   //***************************************************************************
   // Test the new mobility trace against the reference mobility trace.
