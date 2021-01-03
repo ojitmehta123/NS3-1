@@ -58,7 +58,22 @@ std::ostream *
 OutputStreamWrapper::GetStream (void)
 {
   NS_LOG_FUNCTION (this);
-  return m_ostream;
+  if (time_to_flush > 1000)
+  {
+    Flush();
+    time_to_flush = 0;
+  }
+  time_to_flush++;
+  return &m_sstream;
 }
+
+void
+OutputStreamWrapper::Flush (void)
+{
+  NS_LOG_FUNCTION(this);
+  *m_ostream << std::unitbuf << m_sstream.str() << std::flush;
+  m_sstream = std::stringstream();
+}
+
 
 } // namespace ns3
